@@ -23,7 +23,11 @@ const color = useState(
   "color",
   () => colors[Math.floor(Math.random() * colors.length)]
 );
-const { data: num } = await useFetch("/api/test");
+
+async function getData() {
+  return $fetch("/test/api");
+}
+const { data: num } = await useAsyncData("test", () => $fetch("/api/test"));
 </script>
 
 <template>
